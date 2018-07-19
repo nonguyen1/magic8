@@ -16,6 +16,10 @@ hr {
     border: solid 2px black;
 }
 
+#instruction {
+    text-align: center;
+}
+
 #magic_8 {
     width: 500px;
     height: 500px;
@@ -24,6 +28,7 @@ hr {
     border-radius: 50%;
     text-align: center; 
     position: relative;
+    transform: translate(0%, 0%);
 
     /* Give a spherical shade */
     background: -webkit-radial-gradient(100px 100px, circle rgb(80, 80, 80), rgb(0, 0, 0));
@@ -35,20 +40,22 @@ hr {
 #inner_cirlce {
     width: 250px;
     height: 250px; 
-   
+
     position: absolute;
     top: 50%;
     left: 50%; 
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Move my object by half of its size */
 
     background-color: white;
     border-radius: 50%;
 }
 
+/*
 @font-face{
  font-family:"digital";
  src: url('./digital-7/digital-7.tff');
 }
+*/
 
 #eight {
     line-height: 250px; /* Cented using same width line-heigt */
