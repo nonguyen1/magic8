@@ -3,6 +3,8 @@ This is a magic 8 ball program that I wrote to learn/experiment with Javascript.
 
 What I hope to get out of this project:
 - Gain more experience with Javascript
+- Gain more experience with JQuery
+- Gain more experience with CSS
 - Deploy this application into a html webpage.
 - Make an athestetically pleasing application.
 

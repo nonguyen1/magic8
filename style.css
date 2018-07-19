@@ -1,0 +1,53 @@
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+hr { 
+    margin-bottom: 40px;
+}
+
+#magic_8_container {
+    background-color: rgb(240, 240, 240);
+    padding: 20px; 
+    margin: 0 auto;
+    width: 900px;
+    border: solid 2px black;
+}
+
+#magic_8 {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    background-color: rgb(40, 40, 40);
+    border-radius: 50%;
+    text-align: center; 
+    position: relative;
+}
+
+#inner_cirlce {
+    width: 250px;
+    height: 250px; 
+   
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+    border-radius: 50%;
+}
+
+@font-face{
+ font-family:"digital";
+ src: url('./digital-7/digital-7.tff');
+}
+
+#eight {
+    line-height: 250px; /* Cented using same width line-heigt */
+    color: black; 
+    margin: 0 auto;
+    font-size: 18em;
+    font-family: digital, arial;
+}
