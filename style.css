@@ -24,6 +24,12 @@ hr {
     border-radius: 50%;
     text-align: center; 
     position: relative;
+
+    /* Give a spherical shade */
+    background: -webkit-radial-gradient(100px 100px, circle rgb(80, 80, 80), rgb(0, 0, 0));
+    background: -moz-radial-gradient(100px 100px, circle, rgb(80, 80, 80), rgb(0, 0, 0));
+    background: radial-gradient(100px 100px, circle, rgb(80, 80, 80), rgb(0, 0, 0));
+
 }
 
 #inner_cirlce {
@@ -48,6 +54,6 @@ hr {
     line-height: 250px; /* Cented using same width line-heigt */
     color: black; 
     margin: 0 auto;
-    font-size: 18em;
+    font-size: 11em;
     font-family: digital, arial;
 }
