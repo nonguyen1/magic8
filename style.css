@@ -41,13 +41,15 @@ hr {
     width: 250px;
     height: 250px; 
 
+    background-color: white;
+    border-radius: 50%;
+}
+
+.inner_item {
     position: absolute;
     top: 50%;
     left: 50%; 
-    transform: translate(-50%, -50%); /* Move my object by half of its size */
-
-    background-color: white;
-    border-radius: 50%;
+    transform: translate(-50%, -50%); /* Move my object by half of its size */ 
 }
 
 /*
@@ -63,4 +65,9 @@ hr {
     margin: 0 auto;
     font-size: 11em;
     font-family: digital, arial;
+}
+
+#myCanvas {
+    width: 250px;
+    height: 250px;
 }
