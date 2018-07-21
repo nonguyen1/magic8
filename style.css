@@ -45,6 +45,14 @@ hr {
     border-radius: 50%;
 }
 
+#msg_cirlce {
+    width: 250px;
+    height: 250px; 
+
+    background-color: rgb(20, 20, 20);
+    border-radius: 50%;
+}
+
 .inner_item {
     position: absolute;
     top: 50%;
@@ -68,6 +76,10 @@ hr {
 }
 
 #myCanvas {
+    /*
     width: 250px;
     height: 250px;
+    */
+
+    transform: translate(-50%, -40%);
 }
