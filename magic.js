@@ -6,6 +6,7 @@
 
 "use strict"
 
+// Shake constants
 const max_num_shakes = 7;
 const min_num_skakes = 3;
 const max_shake_distance = 150;
@@ -13,6 +14,14 @@ const min_shake_distance = 30;
 const shake_speed = 100;
 const even_divisor = 2;
 const shake_direction = 0.5
+
+// Triangle print settings.
+const triangle_color = "rgb(21, 46, 103)";
+const triangle_text_color = "rgb(151, 176, 233)"; 
+const max_num_lines = 3
+const max_char_line1 = 8
+const max_char_line2 = 7
+const max_char_line3 = 6
 
 // Output results.
 const phrases = [
@@ -37,11 +46,9 @@ const phrases = [
     "It is certain"
 ]
 
-
 $(document).ready(function(evt) {
     var msg_shown = 0; // State of the ball. 1 if 8 ball msg is shown.  
     var iii; // Counter for number of shakes.
-
 
     // Check if the number 8 is being shown.
     if ($('#eight').attr('hidden')) {
@@ -50,11 +57,17 @@ $(document).ready(function(evt) {
 
     // Shake magic 8 ball on click.
     $('#magic_8').click(function() { 
+
+        // Don't allow clicks until animation is over. 
+        if ($(':animated').length) {
+            return false;
+        }
+
         // Need to shake the ball and reveal result.
         if (!msg_shown) {
-            draw_text(); // Generate a new text result.
+            build_answer(); // Generate a new text result.
 
-            $('#instruction').text("Click the ball to reveal your fate");
+            $('#instruction').text("Click the ball to reset.");
 
             // Shake the ball.
             var num_shakes = Math.ceil(max_num_shakes * Math.random());
@@ -91,6 +104,8 @@ $(document).ready(function(evt) {
                     $(this).animate({ left: shake_distance}, shake_speed); 
                 } 
             } 
+
+            // Recenter the ball, and hide the '8' logo.
             $(this).animate({ left: '0px'}, shake_speed, 
                 function() {
                     // Begin show message.
@@ -101,46 +116,54 @@ $(document).ready(function(evt) {
                 }); // Recenter ball.  
             msg_shown = 1;
         } 
-        // Flip the ball back to the eight.
+
+        // Flip the ball back to the eight (reset).
         else { 
-            $('#instruction').text("Click the ball to reset.");
+            $('#instruction').text("Click the ball to reveal your fate");
             $('#msg_cirlce').hide(100);
             $('#myCanvas').hide(100);
             $('#inner_cirlce').show(100);
             msg_shown = 0;
-
         } 
     }); 
 });
 
 /*
- * draw_text()
+ * build_answer()
  * Draws randomly pick text and print the text into the prediction triangle.
  */
-function draw_text() {
+function build_answer() {
     // Draw the item in the canvas.
     var canvas = document.getElementById("myCanvas");
     var context = canvas.getContext("2d"); 
     var choice = Math.floor(phrases.length * Math.random());
-    context.beginPath();
-    context.moveTo(0, 0);
-    context.lineTo(150, 0);
-    context.lineTo(75, 150);
-    context.closePath(); 
 
-    context.fillStyle = "rgb(21, 46, 103)";
-    context.fill();
+    draw_triangle(context);
+
     context.font = "18px Arial";
-    context.fillStyle = "rgb(151, 176, 233)";
+    context.fillStyle = triangle_text_color;
     context.textAlign = "center"; 
 
     // Get an array for each line of text to print.
     var fate_str = phrases[choice];
     var text = generate_text(fate_str);
 
-    context.fillText(text[0], 75, 35);
-    context.fillText(text[1], 75, 60);
-    context.fillText(text[2], 75, 85); 
+    // TODO: Remove magic numbers.
+    context.fillText(text[0], 75, 30);
+    context.fillText(text[1], 75, 55);
+    context.fillText(text[2], 75, 80); 
+}
+
+function draw_triangle(context) {
+    // TODO: Remove magic numbers.
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(150, 0);
+    context.lineTo(75, 150);
+    context.closePath(); 
+
+    context.fillStyle = triangle_color;
+    context.fill();
 }
 
 function generate_text(phrase) {
@@ -153,27 +176,22 @@ function generate_text(phrase) {
      * empyt, then there is an empty string in the position.
      */
 
-    var array = ["", "", ""];
+    var array = ["", "", ""]; // String for the 3 lines to print. 
     var length = phrase.length
     var words = phrase.split(" ");
     var current_line = 0;
-    var max_lines = 3
-    var char_max = [8, 7, 6]
+    var char_max = [max_char_line1, max_char_line2, max_char_line3]
     var iii = 0;
     var chars_added;
     var current_word;
 
-    while (current_line < max_lines) {
+    while (current_line < max_num_lines) {
         chars_added = 0;
 
         while (words[iii] && chars_added < char_max[current_line]) {
             chars_added += words[iii].length + 1;
             array[current_line] = array[current_line] + words[iii] + " ";
             iii++;
-
-            if (chars_added > 20) {
-                break;
-            }
         } 
         current_line++;
     }
