@@ -1,6 +1,14 @@
 # magic8
 This is a magic 8 ball program that I wrote to learn/experiment with Javascript.
 
+A live implementation can be found [here](http://acsweb.ucsd.edu/~nonguyen/)
+on my personal website
+
+Screen shots:
+
+<img src='./images/magic1.png' width=220/>
+<img src='./images/magic2.png' width=220/>
+
 Desired outcome:
 - Gain more experience with Javascript/JQuery/HTML/CSS
 - Gain more experience with improving methods to improve scalability.
@@ -22,4 +30,3 @@ How to draw in an html canvas
 
 Main JQuery API
     https://api.jquery.com/
-
